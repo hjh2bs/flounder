@@ -1,0 +1,50 @@
+hjh2bs
+1/18/2017
+
+Notes:
+
+
+See below url for information on content scripts:
+
+http://stackoverflow.com/questions/9515704/building-a-chrome-extension-inject-code-in-a-page-using-a-content-script
+
+
+
+  "background": {
+  	"scripts": ["magic.js"]
+  },
+
+
+  look into unlimitedSTorage
+
+  computed property names - put variable in brackets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

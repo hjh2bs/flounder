@@ -21,7 +21,7 @@
   "icons": { 
     "16": "images/favicon.png",
     "48": "images/favicon_48.png",
-    "128": "images/favicon_128.png" 
+    "128": "images/fish_green.jpg" 
   },
 
   "content_scripts": [

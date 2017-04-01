@@ -11,7 +11,7 @@ $(document).ready(function(){
 	//console.log(month);
 	var date = month +'-' + day;
 
-	//console.log(date);
+	console.log(date);
 	//storage.clear();
 
 
@@ -28,14 +28,14 @@ $(document).ready(function(){
 			if(day - number >=3 ){
 				storage.remove(content[x]);
 			}
-			if(day==1 & number <= 29){
+			if(day==1 & number <= 29 & number>1){
 				storage.remove(content[x]);
 			}
 
-			if(day==2 & number <= 30){
+			if(day==2 & number <= 30 & number>2){
 				storage.remove(content[x]);
 			}
-			if(day==3 & number <=31){
+			if(day==3 & number <=31 & number>3){
 				storage.remove(content[x]);
 			}
 			//console.log(number);
@@ -47,11 +47,11 @@ $(document).ready(function(){
 		var content = Object.values(value);
 		//console.log('retrieved');
 		if(content[0] != undefined){
-			//console.log('content exists');
-			//console.log(content[0]);
+			console.log('content exists');
+			console.log(content[0]);
 		}
 		else{
-			//console.log('content nonexistent');
+			console.log('content nonexistent');
 			storage.set({[date]: ''}, function(){
 	    		//console.log('saved');
 	    		str1 = "";
@@ -66,17 +66,12 @@ $(document).ready(function(){
 		var letter = e.key;
 
 		if (letter == 'Enter'){
-			if(str1 != ''){
-	    	//storage.set(
-	    	//	{[str1]: [str1, month, day]}, function(){
-	    	//	console.log('saved');
-	    	//	str1 = "";
-	    	//});
-
+			if( $.trim(str1) != ''){
+	    		console.log(date);
 		    	storage.get([date], function(items){
 		    		var words = Object.values(items);
 		    		var numbers = Object.keys(items);
-		    		//console.log('Get Beginning');
+		    		console.log('Entered');
 		    		//console.log(numbers);
 		    		//console.log(words);
 	    			//console.log(str1);
@@ -86,7 +81,7 @@ $(document).ready(function(){
 	    			str2 = str2.concat('<br>');
 		    		//console.log(str2);
 		    		storage.set({[date]: str2}, function(){
-	    				//console.log('saved');
+	    				console.log('saved');
 	    				str1 = "";
 	    			});
 	    		});
@@ -97,21 +92,29 @@ $(document).ready(function(){
 			str1 = str1.concat(letter);
 		}
 
+	}
 
-		$(window).change(function(){
-	    	storage.get([date], function(items){
-	    		var words = Object.values(items);
-	    		//console.log(words);
-	    		var str2 = words[0];
+	$(window).change(function(){
+	   	storage.get([date], function(items){
+			var words = Object.values(items);
+			console.log('window change!');
+	    	//console.log(date);
+	    	//console.log(words);
+	    	var str2 = words[0];
+
+	    	if ( $.trim(str1) == '' ){
+	    		console.log('blank string');
+	    	}
+	    	else{
 	    		str2 = str2.concat(str1);
 	    		str2 = str2.concat('<br>');
 	    		storage.set({[date]: str2}, function(){
-	    			//console.log('saved');
+	    		console.log('saved');
 	    			str1 = "";
 	    		})
-	    	});
-		});
-	}
+	    	}
+	   	});
+	});
 
 });
 
